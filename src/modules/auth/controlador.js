@@ -15,6 +15,7 @@ module.exports = function (dbInyectada) {
       id: body.id,
       usuario: body.usuario,
       password: body.password,
+      rol: body.rol,
     }
 
     if (body.usuario) {
@@ -23,6 +24,10 @@ module.exports = function (dbInyectada) {
 
     if (body.password) {
       authData.password = await bcrypt.hash(body.password.toString(), 5)
+    }
+
+    if (body.rol) {
+      authData.rol = body.rol
     }
 
     return db.actualizar(TABLA, authData)
@@ -34,7 +39,11 @@ module.exports = function (dbInyectada) {
     return bcrypt.compare(password, data.password).then((result) => {
       if (result === true) {
         //Generar un token si es true
-        return authentication.asignarToken({ ...data })
+        return {
+          token: authentication.asignarToken({ ...data }),
+          userId: data.id,
+          rol: data.rol,
+        }
       } else {
         //Generar un error si es false
         throw new error('Información Inválida', 401)
@@ -46,6 +55,7 @@ module.exports = function (dbInyectada) {
     const authData = {
       usuario: data.usuario,
       password: data.password,
+      rol: data.rol,
     }
 
     if (data.usuario) {
@@ -54,6 +64,10 @@ module.exports = function (dbInyectada) {
 
     if (data.password) {
       authData.password = await bcrypt.hash(data.password.toString(), 5)
+    }
+
+    if (data.rol) {
+      authData.rol = data.rol
     }
 
     return db.agregar(TABLA, authData)

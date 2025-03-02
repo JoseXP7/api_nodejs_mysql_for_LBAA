@@ -30,8 +30,8 @@ module.exports = function (dbInyectada) {
     return db.agregar(TABLA, body)
   }
 
-  function eliminar(body) {
-    return db.eliminarCurso(TABLA, body)
+  function eliminar(id_curso) {
+    return db.eliminarCurso(TABLA, id_curso)
   }
 
   return {

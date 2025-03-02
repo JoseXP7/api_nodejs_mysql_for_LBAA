@@ -86,11 +86,11 @@ function agregar(tabla, data) {
   })
 }
 
-function eliminar(tabla, data) {
+function eliminar(tabla, id) {
   return new Promise((resolve, reject) => {
     conexion.query(
       `DELETE FROM ${tabla} WHERE id = ?`,
-      data.id,
+      id,
       (error, result) => {
         return error ? reject(error) : resolve(result)
       }
@@ -135,11 +135,11 @@ function actualizarCurso(tabla, data) {
   })
 }
 
-function eliminarCurso(tabla, data) {
+function eliminarCurso(tabla, id_curso) {
   return new Promise((resolve, reject) => {
     conexion.query(
       `DELETE FROM ${tabla} WHERE id_curso = ?`,
-      data.id_curso,
+      id_curso,
       (error, result) => {
         return error ? reject(error) : resolve(result)
       }
@@ -172,11 +172,11 @@ function actualizarCursoEstudiante(tabla, data) {
   })
 }
 
-function eliminarCursoEstudiante(tabla, data) {
+function eliminarCursoEstudiante(tabla, id_estudiante) {
   return new Promise((resolve, reject) => {
     conexion.query(
       `DELETE FROM ${tabla} WHERE id_estudiante = ?`,
-      data.id_estudiante,
+      id_estudiante,
       (error, result) => {
         return error ? reject(error) : resolve(result)
       }

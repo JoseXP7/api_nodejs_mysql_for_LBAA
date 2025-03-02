@@ -27,11 +27,12 @@ module.exports = function (dbInyectada) {
 
     let respuesta2 = ''
 
-    if (body.usuario || body.password) {
+    if (body.usuario || body.password || body.rol) {
       respuesta2 = await auth.actualizar({
         id: body.id,
         usuario: body.usuario,
         password: body.password,
+        rol: body.rol,
       })
     }
 
@@ -48,18 +49,19 @@ module.exports = function (dbInyectada) {
 
     let respuesta2 = ''
 
-    if (body.usuario || body.password) {
+    if (body.usuario || body.password || body.rol) {
       respuesta2 = await auth.agregar({
         usuario: body.usuario,
         password: body.password,
+        rol: body.rol,
       })
     }
 
     return respuesta2
   }
 
-  function eliminar(body) {
-    return db.eliminar(TABLA, body)
+  function eliminar(id) {
+    return db.eliminar(TABLA, id)
   }
 
   return {

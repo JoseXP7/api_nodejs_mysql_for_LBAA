@@ -1,6 +1,7 @@
 const express = require('express')
 
 const seguridad = require('./seguridad')
+const rbac = require('./rbac')
 
 const respuesta = require('../../red/respuestas')
 const controlador = require('./index')
@@ -9,9 +10,9 @@ const router = express.Router()
 
 router.get('/', todos)
 router.get('/:id', uno)
-router.post('/', seguridad(), agregar)
-router.put('/', seguridad(), actualizar)
-router.delete('/', seguridad(), eliminar)
+router.post('/', seguridad(), rbac(['supersu', 'admin']), agregar)
+router.put('/', seguridad(), rbac(['supersu', 'admin']), actualizar)
+router.delete('/:id', seguridad(), rbac(['supersu', 'admin']), eliminar)
 
 async function todos(req, res, next) {
   try {
@@ -53,7 +54,7 @@ async function agregar(req, res, next) {
 
 async function eliminar(req, res, next) {
   try {
-    const items = await controlador.eliminar(req.body)
+    const items = await controlador.eliminar(req.params.id)
     respuesta.success(req, res, 'Docente Eliminado', 200)
   } catch (err) {
     next(err)

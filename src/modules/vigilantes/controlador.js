@@ -20,11 +20,11 @@ module.exports = function (dbInyectada) {
   }
 
   function agregar(body) {
-    return db.agregar(TABLA, body)
+    return db.agregar(TABLA, id)
   }
 
-  function eliminar(body) {
-    return db.eliminar(TABLA, body)
+  function eliminar(id) {
+    return db.eliminar(TABLA, id)
   }
 
   return {
