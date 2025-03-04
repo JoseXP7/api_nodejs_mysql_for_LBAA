@@ -20,7 +20,7 @@ module.exports = function (dbInyectada) {
   }
 
   function agregar(body) {
-    return db.agregar(TABLA, id)
+    return db.agregar(TABLA, body)
   }
 
   function eliminar(id) {

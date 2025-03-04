@@ -8,8 +8,8 @@ const controlador = require('./index')
 
 const router = express.Router()
 
-router.get('/', seguridad(), rbac(['supersu']), todos)
-router.get('/:id', seguridad(), rbac(['supersu']), uno)
+router.get('/', todos)
+router.get('/:id', uno)
 router.post('/', seguridad(), rbac(['supersu']), agregar)
 router.put('/', seguridad(), rbac(['supersu']), actualizar)
 router.delete('/:id', seguridad(), rbac(['supersu']), eliminar)

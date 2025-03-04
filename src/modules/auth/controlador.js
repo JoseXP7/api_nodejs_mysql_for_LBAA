@@ -42,6 +42,7 @@ module.exports = function (dbInyectada) {
         return {
           token: authentication.asignarToken({ ...data }),
           userId: data.id,
+		  usuario: data.usuario,
           rol: data.rol,
         }
       } else {

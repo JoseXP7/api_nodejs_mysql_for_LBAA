@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const config = require('./config')
 const cors = require('cors')
+const helmet = require('helmet')
 
 const estudiantes = require('./modules/estudiantes/rutas')
 const docentes = require('./modules/docentes/rutas')
@@ -23,6 +24,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
+app.use(helmet())
 app.disable('etag')
 
 //Configuracion
