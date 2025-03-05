@@ -15,6 +15,7 @@ const usuarios = require('./modules/usuarios/rutas')
 const auth = require('./modules/auth/rutas')
 const cursos = require('./modules/curso/rutas')
 const cursos_estudiantes = require('./modules/curso_estudiante/rutas')
+const proyectos = require('./modules/proyectos/rutas')
 const error = require('./red/errors')
 
 const app = express()
@@ -42,6 +43,7 @@ app.use('/api/usuarios', usuarios)
 app.use('/api/auth', auth)
 app.use('/api/cursos', cursos)
 app.use('/api/cursos_estudiantes', cursos_estudiantes)
+app.use('/api/proyectos', proyectos)
 app.use(error)
 
 module.exports = app
