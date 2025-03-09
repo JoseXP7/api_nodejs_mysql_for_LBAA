@@ -5,12 +5,12 @@ module.exports = {
     port: process.env.PORT || 4000,
   },
   jwt: {
-    secret: process.env.JWT_SECRET || 'notaSecreta', //usar .env
+    secret: process.env.JWT_SECRET, //usar .env
   },
   mysql: {
-    host: process.env.MYSQL_HOST || 'localhost',
-    user: process.env.MYSQL_USER || 'root',
-    password: process.env.MYSQL_PASSWORD || '',
-    database: process.env.MYSQL_DB || 'liceodb',
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DB,
   },
 }
